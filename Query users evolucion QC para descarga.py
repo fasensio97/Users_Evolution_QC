@@ -216,9 +216,9 @@ for i in range(num_iterations):
 
                   FORMAT_DATETIME('%Y-%m',fo.registered_date) AS Month,
                   '{vertical}' AS vertical,
-                    CASE WHEN reactivated_tm_qc.id is not null then 'Reactivado'
-                  WHEN acquisitions_tm.user_id is not null then 'Adquisicion'
-                  WHEN new_users_tm_qc.id is not null then 'New user'
+                    CASE WHEN reactivated_tm_qc.id is not null then 'Reactivados'
+                  WHEN acquisitions_tm.user_id is not null then 'Acquisition'
+                  WHEN new_users_tm_qc.id is not null then 'New Users'
                   END AS user_type,
 
                   --COUNT(DISTINCT CASE WHEN fo.order_status = 'CONFIRMED' AND p.fromDate IS NOT NULL AND p.toDate IS NOT NULL THEN fo.user.id END) AS q_orders_campana,
@@ -388,9 +388,9 @@ for i in range(num_iterations):
                   CASE WHEN ((UPPER(UPPER((coalesce( dp.businessCategory.name ,'Without Category')))) LIKE UPPER ('Supermercado%')) OR (UPPER(UPPER((coalesce( dp.businessCategory.name ,'Without Category')))) LIKE UPPER ('Minimercado%')) OR (UPPER(UPPER((coalesce( dp.businessCategory.name,'Without Category')))) = UPPER('Express'))) then 'Supermercados'
                   WHEN UPPER(dpb.business_type_name) = 'MARKET' AND NOT dp.is_darkstore AND NOT (((UPPER(UPPER((coalesce( dp.businessCategory.name ,'Without Category')))) LIKE UPPER ('Supermercado%')) OR (UPPER(UPPER((coalesce( dp.businessCategory.name ,'Without Category')))) LIKE UPPER ('Minimercado%')) OR (UPPER(UPPER((coalesce( dp.businessCategory.name,'Without Category')))) = UPPER('Express')))) then 'Comercios Especializados'
                   END as vertical,                    
-                  CASE WHEN reactivated_tm_qc.id is not null then 'Reactivado'
-                  WHEN acquisitions_tm.user_id is not null then 'Adquisicion'
-                  WHEN new_users_tm_qc.id is not null then 'New user'
+                  CASE WHEN reactivated_tm_qc.id is not null then 'Reactivados'
+                  WHEN acquisitions_tm.user_id is not null then 'Acquisition'
+                  WHEN new_users_tm_qc.id is not null then 'New Users'
                   END AS user_type,
 
 
@@ -561,9 +561,9 @@ for i in range(num_iterations):
 
                   FORMAT_DATETIME('%Y-%m',fo.registered_date) AS Month,
                   '{vertical}' as vertical,                    
-                  CASE WHEN reactivated_tm_qc.id is not null then 'Reactivado'
-                  WHEN acquisitions_tm.user_id is not null then 'Adquisicion'
-                  WHEN new_users_tm_qc.id is not null then 'New user'
+                  CASE WHEN reactivated_tm_qc.id is not null then 'Reactivados'
+                  WHEN acquisitions_tm.user_id is not null then 'Acquisition'
+                  WHEN new_users_tm_qc.id is not null then 'New Users'
                   END AS user_type,
 
 
@@ -733,9 +733,9 @@ for i in range(num_iterations):
 
                   FORMAT_DATETIME('%Y-%m',fo.registered_date) AS Month,
                   '{vertical}' as vertical,                    
-                  CASE WHEN reactivated_tm_qc.id is not null then 'Reactivado'
-                  WHEN acquisitions_tm.user_id is not null then 'Adquisicion'
-                  WHEN new_users_tm_qc.id is not null then 'New user'
+                  CASE WHEN reactivated_tm_qc.id is not null then 'Reactivados'
+                  WHEN acquisitions_tm.user_id is not null then 'Acquisition'
+                  WHEN new_users_tm_qc.id is not null then 'New Users'
                   END AS user_type,
 
 
@@ -910,9 +910,9 @@ for i in range(num_iterations):
 
                   FORMAT_DATETIME('%Y-%m',fo.registered_date) AS Month,
                   '{vertical}' AS vertical,
-                    CASE WHEN reactivated_tm_qc.id is not null then 'Reactivado'
-                  WHEN acquisitions_tm.user_id is not null then 'Adquisicion'
-                  WHEN new_users_tm_qc.id is not null then 'New user'
+                    CASE WHEN reactivated_tm_qc.id is not null then 'Reactivados'
+                  WHEN acquisitions_tm.user_id is not null then 'Acquisition'
+                  WHEN new_users_tm_qc.id is not null then 'New Users'
                   END AS user_type,
 
 
