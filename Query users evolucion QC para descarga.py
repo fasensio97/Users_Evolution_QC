@@ -37,7 +37,7 @@ gc = gspread.authorize(credentials)
 
 # # Bajada queries
 
-# In[37]:
+# In[ ]:
 
 
 #Definimos las verticales (Market ya está dividido en supermercado y comercios especializados)
@@ -46,10 +46,10 @@ verticales = ['Local Stores', 'QC','Market','Pharmacy','Drinks','DMarts','Kiosks
 
 
 # Definimos la cantidad de iteraciones que queremos hacer
-num_iterations = 4
+num_iterations = 5
 
 # último mes que quiero analizar, en el caso que sea marzo datetime.date(2023, 3, 1)
-from_date = datetime.date(2023, 2, 1)
+from_date = datetime.date(2023, 3, 1)
 
 
 
@@ -259,7 +259,7 @@ for i in range(num_iterations):
 
                 AND fo.country_id = 3	
                 AND (reactivated_tm_qc.id IS NOT NULL	OR acquisitions_tm.user_id IS NOT NULL OR new_users_tm_qc.id is not null)
-
+                AND dp.is_darkstore
                 GROUP BY 1,2,3'''
                     
             elif vertical == 'Market':
@@ -433,7 +433,7 @@ for i in range(num_iterations):
 
                 AND fo.country_id = 3	
                 AND (reactivated_tm_qc.id IS NOT NULL	OR acquisitions_tm.user_id IS NOT NULL OR new_users_tm_qc.id is not null)
-
+                AND dp.business_type.business_type_name = '{vertical}'
                 GROUP BY 1,2,3
                 HAVING vertical is not null
                 '''
@@ -606,7 +606,8 @@ for i in range(num_iterations):
 
                 AND fo.country_id = 3	
                 AND (reactivated_tm_qc.id IS NOT NULL	OR acquisitions_tm.user_id IS NOT NULL OR new_users_tm_qc.id is not null)
-
+                AND (dp.is_darkstore = FALSE OR dp.is_darkstore IS NULL)
+                AND dp.business_type.business_type_name NOT IN ('Restaurant','Coffee')
                 GROUP BY 1,2,3
                 '''
             elif vertical == 'QC':
@@ -778,6 +779,7 @@ for i in range(num_iterations):
 
                 AND fo.country_id = 3	
                 AND (reactivated_tm_qc.id IS NOT NULL	OR acquisitions_tm.user_id IS NOT NULL OR new_users_tm_qc.id is not null)
+                AND dp.business_type.business_type_name NOT IN ('Restaurant','Coffee')
 
                 GROUP BY 1,2,3
                 '''
@@ -954,7 +956,8 @@ for i in range(num_iterations):
 
                 AND fo.country_id = 3	
                 AND (reactivated_tm_qc.id IS NOT NULL	OR acquisitions_tm.user_id IS NOT NULL OR new_users_tm_qc.id is not null)
-
+                AND (dp.is_darkstore = FALSE OR dp.is_darkstore IS NULL)
+                AND dp.business_type.business_type_name = '{vertical}'
                 GROUP BY 1,2,3'''
 
                 # Descargar la data
@@ -970,7 +973,7 @@ for i in range(num_iterations):
 
 
 
-# In[38]:
+# In[ ]:
 
 
 df
